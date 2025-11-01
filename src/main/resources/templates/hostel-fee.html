@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Set Hostel Fee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0bbff, #b388eb);
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            padding: 40px;
+            color: #3c096c;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #4a148c;
+        }
+
+        .card {
+            border-radius: 1rem;
+            background: #d9b3ff;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .btn-submit {
+            background-color: #8e24aa;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #6a1b9a;
+            transform: scale(1.05);
+        }
+
+        table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Set Hostel Fee</h1>
+
+        <div class="card">
+            <form th:action="@{/admin/fee/set}" method="post">
+                <div class="mb-3">
+                    <label for="year" class="form-label">Year</label>
+                    <input type="number" class="form-control" id="year" name="year" placeholder="Enter Year" required>
+                </div>
+                <div class="mb-3">
+                    <label for="feeAmount" class="form-label">Fee Amount</label>
+                    <input type="number" class="form-control" id="feeAmount" name="feeAmount" placeholder="Enter Fee Amount" step="0.01" required>
+                </div>
+                <button type="submit" class="btn-submit">Set Fee</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h4>Existing Fees</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Fee Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="fee : ${fees}">
+                        <td th:text="${fee.year}"></td>
+                        <td th:text="${fee.feeAmount}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

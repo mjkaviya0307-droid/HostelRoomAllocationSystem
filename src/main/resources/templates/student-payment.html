@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hostel Fee Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #d1c4e9, #b39ddb);
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            padding: 40px;
+            color: #4a148c;
+        }
+        h1 {
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(255,255,255,0.85);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 18px rgba(74,20,140,0.3);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .btn-pay {
+            background-color: #6a1b9a;
+            color: #fff;
+            border-radius: 25px;
+            padding: 10px 25px;
+            border: none;
+            transition: all 0.3s;
+        }
+        .btn-pay:hover { background-color: #4a148c; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+<div class="container text-center">
+    <h1>Pay Hostel Fee</h1>
+
+    <div class="card mx-auto" style="max-width:500px;">
+        <h4>Total Fee: <span th:text="${feeAmount != null ? '₹'+feeAmount : 'Not Set'}">₹25000</span></h4>
+        <p>Select a payment method:</p>
+
+        <div class="d-grid gap-3 mt-3">
+            <button class="btn btn-pay">Credit / Debit Card</button>
+            <button class="btn btn-pay">Net Banking</button>
+            <button class="btn btn-pay">UPI</button>
+        </div>
+    </div>
+
+    <a th:href="@{/student/dashboard(id=${student.id})}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    
+</div>
+</body>
+</html>
