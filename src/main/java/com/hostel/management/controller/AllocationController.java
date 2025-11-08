@@ -18,30 +18,51 @@ public class AllocationController {
     @Autowired
     private RoomRepository roomRepository;
 
-    // Allocate a student to a room
+    /**
+     * Allocates a student to a specific room based on:
+     * - Room capacity
+     * - Student's existing allocation
+     * - Gender-based room policy
+     */
     @PostMapping("/{studentId}/room/{roomId}")
     public String allocateRoom(@PathVariable Long studentId, @PathVariable Long roomId) {
-        Student student = studentRepository.findById(studentId).orElseThrow(()-> new
-        		RuntimeException("Student not found with ID:"+studentId));
-        Room room = roomRepository.findById(roomId).orElseThrow(()-> new
-        		RuntimeException("Room not found with ID:"+roomId));
+        // Fetch the student and room entities from the database
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Student not found with ID: " + studentId));
 
-        //Check if student already has a room
+        Room room = roomRepository.findById(roomId)
+                .orElseThrow(() -> new RuntimeException("Room not found with ID: " + roomId));
+
+        // ✅ Check if student already has a room
         if (student.getRoom() != null) {
-            return "Student " + student.getName() + " is already allocated to a room!"+student.getRoom().getRoomNumber();
-        }
-        // Check if room is full
-        if (room.getAllocatedCount() >= room.getCapacity()) {
-            return "Room is already full!";
+            return "❗ Student " + student.getName() + " is already allocated to Room "
+                    + student.getRoom().getRoomNumber();
         }
 
-        // Allocate room
+        // ✅ Check if the room is full
+        if (room.getAllocatedCount() >= room.getCapacity()) {
+            return "🚫 Room " + room.getRoomNumber() + " is already full!";
+        }
+
+        // ✅ Gender-based allocation check
+        if (!room.getStudents().isEmpty()) {
+            // Take the gender of the first student already in this room
+            String existingGender = room.getStudents().get(0).getGender();
+
+            if (existingGender != null && !existingGender.equalsIgnoreCase(student.getGender())) {
+                return "⚠️ Room " + room.getRoomNumber() + " is for "
+                        + existingGender + " students only!";
+            }
+        }
+
+        // ✅ Proceed with allocation
         student.setRoom(room);
         room.setAllocatedCount(room.getAllocatedCount() + 1);
 
         studentRepository.save(student);
         roomRepository.save(room);
 
-        return "Student " + student.getName() + " allocated to Room " + room.getRoomNumber();
+        return "✅ Student " + student.getName() + " (" + student.getGender()
+                + ") allocated to Room " + room.getRoomNumber();
     }
 }

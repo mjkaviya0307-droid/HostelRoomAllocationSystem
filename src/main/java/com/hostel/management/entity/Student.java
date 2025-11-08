@@ -20,7 +20,9 @@ public class Student {
     private int year;
     @Column(name="password")
     private String password;
-    
+    @Column(nullable = true)
+    private String gender; // "Male" or "Female"
+
 
     // NEW: Relation with Room
     @ManyToOne
@@ -80,5 +82,12 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

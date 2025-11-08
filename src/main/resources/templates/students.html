@@ -83,6 +83,7 @@
                     <th><i class="bi bi-envelope"></i> Email</th>
                     <th><i class="bi bi-building"></i> Department</th>
                     <th><i class="bi bi-mortarboard"></i> Year</th>
+                    <th><i class="bi bi-gender-ambiguous"></i> Gender</th>
                     <th>Action</th> <!-- Delete button column -->
                 </tr>
             </thead>
@@ -93,6 +94,7 @@
                     <td th:text="${student.email}"></td>
                     <td th:text="${student.department}"></td>
                     <td th:text="${student.year}"></td>
+                    <td th:text="${student.gender}"></td>
                     <td>
                         <button class="btn-delete" th:onclick="'deleteStudent(' + ${student.id} + ')'" >
                             <i class="bi bi-trash"></i> Delete
@@ -114,6 +116,7 @@
     <input type="email" id="email" placeholder="Email" style="width:100%; padding:8px; margin:8px 0;">
     <input type="text" id="department" placeholder="Department" style="width:100%; padding:8px; margin:8px 0;">
     <input type="text" id="year" placeholder="Year" style="width:100%; padding:8px; margin:8px 0;">
+    <input type="text" id="gender" placeholder="Gender" style="width:100%; padding:8px; margin:8px 0;">
     <button class="btn btn-custom mt-2" onclick="saveStudent()">Save</button>
   </div>
 </div>
@@ -132,7 +135,8 @@
       name: document.getElementById("name").value.trim(),
       email: document.getElementById("email").value.trim(),
       department: document.getElementById("department").value.trim(),
-      year: document.getElementById("year").value.trim()
+      year: document.getElementById("year").value.trim(),
+      gender: document.getElementById("gender").value.trim()
     };
     fetch("/api/students", {
       method: "POST",

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .chat-container {
+            width: 400px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .messages {
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border: 1px solid #eee;
+            padding: 10px;
+        }
+        .user {
+            text-align: right;
+            color: blue;
+        }
+        .bot {
+            text-align: left;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h3>Student Chatbot</h3>
+        <div id="messages" class="messages"></div>
+        <input type="text" id="messageInput" placeholder="Type your question..." style="width: 80%">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const input = document.getElementById("messageInput");
+            const message = input.value.trim();
+            if (message === "") return;
+
+            const messagesDiv = document.getElementById("messages");
+            messagesDiv.innerHTML += <div class='user'>You: ${message}</div>;
+            input.value = "";
+
+            const response = await fetch("/chatbot/ask", {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: message
+            });
+            const reply = await response.text();
+            messagesDiv.innerHTML += <div class='bot'>Bot: ${reply}</div>;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
+    <!-- Chatbot Icon (Floating Button) -->
+<div id="chatIcon" style="
+  position: fixed; bottom: 20px; right: 20px; 
+  background-color: #6A0DAD; color: white;
+  border-radius: 50%; width: 60px; height: 60px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 24px; box-shadow: 0 0 10px rgba(0,0,0,0.3);
+">
+💬
+</div>
+</body>
+</html>
