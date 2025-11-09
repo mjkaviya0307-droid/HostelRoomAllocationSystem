@@ -62,14 +62,16 @@ It provides secure login, automated room allocation, fee payment, and an intelli
 3. Update application.properties with your own MySQL credentials:
 
    spring.datasource.url=jdbc:mysql://localhost:3306/hostel_management
+   
    spring.datasource.username=root
+   
    spring.datasource.password=your_password
 
-4. Run the project using:
+5. Run the project using:
 
    mvn spring-boot:run
 
-5. Access the application at:
+6. Access the application at:
    
 👉 http://localhost:8080/
 
