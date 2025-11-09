@@ -44,27 +44,6 @@ It provides secure login, automated room allocation, fee payment, and an intelli
 5. A **chatbot icon** is available in the student dashboard for quick query assistance.  
 
 
-## 🧩 Folder Structure (Simplified)
-
-src/
-├── main/
-│ ├── java/com/hostel/management/
-│ │ ├── controller/
-│ │ ├── entity/
-│ │ ├── repository/
-│ │ ├── service/
-│ │ └── HostelManagementApplication.java
-│ └── resources/
-│ ├── static/
-│ │ └── js/chatbot.js
-│ ├── templates/
-│ │ ├── dashboard.html
-│ │ ├── allocation.html
-│ │ └── login.html
-│ └── application.properties
-└── test/
-
-
 ## 🧰 Setup Instructions
 
 ### Prerequisites
@@ -77,6 +56,45 @@ src/
 1. Clone the repository  
    ```bash
    git clone https://github.com/<your-username>/<your-repo-name>.git
+
+2. Open the project in Eclipse or VS Code.
+
+3. Update application.properties with your own MySQL credentials:
+
+   spring.datasource.url=jdbc:mysql://localhost:3306/hostel_management
+   spring.datasource.username=root
+   spring.datasource.password=your_password
+
+4. Run the project using:
+
+   mvn spring-boot:run
+
+5. Access the application at:
+   
+👉 http://localhost:8080/
+
+💡 Future Enhancements
+
+Online room change requests
+
+Smart chatbot with NLP
+
+Payment gateway integration (Razorpay / Stripe)
+
+Enhanced analytics dashboard for admin
+
+👩‍💻 Author
+
+Kavya M J
+🎓 Java Developer | Passionate about full-stack and AI-integrated applications
+📫 LinkedIn: www.linkedin.com/in/03kaviya01
+📫 Email: mjkaviya0307@gmail.com
+
+📜 License
+
+This project is licensed under the MIT License - feel free to use, modify, and enhance it.
+
+
 
 
 
