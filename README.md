@@ -73,26 +73,29 @@ It provides secure login, automated room allocation, fee payment, and an intelli
    
 👉 http://localhost:8080/
 
-💡 Future Enhancements
 
-Online room change requests
+## 🔮 Future Enhancements
 
-Smart chatbot with NLP
+- Add online room change request system  
+- Integrate a smarter NLP-based chatbot  
+- Implement payment gateway (Razorpay / Stripe)  
+- Add analytics dashboard for admin (room occupancy, fee stats, etc.)  
+- Improve UI with responsive design and animations  
+- Role-based access control for more security  
 
-Payment gateway integration (Razorpay / Stripe)
 
-Enhanced analytics dashboard for admin
+## 👩‍💻 Author
 
-👩‍💻 Author
+**Kavya M.J**  
+🎓 Java Developer | Passionate about full-stack and AI-integrated applications  
+📫 [Your LinkedIn or Email Here (optional)]
 
-Kavya M J
-🎓 Java Developer | Passionate about full-stack and AI-integrated applications
-📫 LinkedIn: www.linkedin.com/in/03kaviya01
-📫 Email: mjkaviya0307@gmail.com
 
-📜 License
+## 📜 License
 
-This project is licensed under the MIT License - feel free to use, modify, and enhance it.
+This project is licensed under the **MIT License** – feel free to use, modify, and enhance it.
+
+
 
 
 
