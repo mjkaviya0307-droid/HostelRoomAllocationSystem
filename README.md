@@ -88,7 +88,8 @@ It provides secure login, automated room allocation, fee payment, and an intelli
 
 **Kavya M.J**  
 🎓 Java Developer | Passionate about full-stack and AI-integrated applications  
-📫 [Your LinkedIn or Email Here (optional)]
+📫 LinkedIn: www.linkedin.com/in/03kaviya01
+📫 Email: mjkaviya0307@gmail.com
 
 
 ## 📜 License
