@@ -46,6 +46,38 @@ It provides secure login, automated room allocation, fee payment, and an intelli
 
 ## 🧩 Folder Structure (Simplified)
 
+src/
+├── main/
+│ ├── java/com/hostel/management/
+│ │ ├── controller/
+│ │ ├── entity/
+│ │ ├── repository/
+│ │ ├── service/
+│ │ └── HostelManagementApplication.java
+│ └── resources/
+│ ├── static/
+│ │ └── js/chatbot.js
+│ ├── templates/
+│ │ ├── dashboard.html
+│ │ ├── allocation.html
+│ │ └── login.html
+│ └── application.properties
+└── test/
+
+
+## 🧰 Setup Instructions
+
+### Prerequisites
+- Java 17+  
+- Maven  
+- MySQL Server  
+- IDE (Eclipse or VS Code with Spring Boot extension)
+
+### Steps to Run
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/<your-username>/<your-repo-name>.git
+
 
 
 
